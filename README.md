@@ -5,3 +5,5 @@ NOTICE: this library is synced with java and kotlin only
 
 How to use: add the  jar file to your project(how to add jar file depends on your IDE), 
 enjoy it!
+
+I will be glad if you guys help me to develop this library!
