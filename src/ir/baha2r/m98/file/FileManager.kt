@@ -3,8 +3,6 @@
  * A class to complete java.io.File @suppress java.io.File
  **/
 
-//TODO : comment for methods - library as jar file
-
 package ir.baha2r.m98.file
 
 import java.io.*
