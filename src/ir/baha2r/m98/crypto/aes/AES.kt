@@ -61,8 +61,8 @@ class AES
     }
 
     @Throws(IOException::class)
-    fun fileEncryption(directory: File, fileName: String): File? {
-        var fileName = fileName
+    fun fileEncryption(directory: File, originalFileName: String): File? {
+        var fileName = originalFileName
         if (!directory.isDirectory) {
             System.err.println("This is not a directory!")
             return null
@@ -108,8 +108,8 @@ class AES
     }
 
     @Throws(IOException::class)
-    fun fileDecryption(directory: File, fileName: String): File? {
-        var fileName = fileName
+    fun fileDecryption(directory: File, originalFileName: String): File? {
+        var fileName = originalFileName
         val tempName = fileName
         fileName = "Encrypted_$fileName"
         if (!directory.isDirectory) {
