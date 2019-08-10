@@ -1,6 +1,6 @@
 package ir.baha2r.m98.crypto.aesfilemanager;
 
-class CharacterHider {
+abstract class MakeVisible {
     private static final byte MUL = -1;
     private static final byte PLUS = 51;
 
