@@ -9,16 +9,15 @@ import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
-class AES : FileManager() {
+class AES
+/**
+ * This constructor is used for prepared Key and ivVector thad are already exist
+ */ @Throws(IOException::class) constructor() : FileManager() {
     private val ALGORITHM = "AES/CBC/PKCS5PADDING"
     private lateinit var KEY: SecretKeySpec
     private lateinit var IV: IvParameterSpec
 
-    /**
-     * This constructor is used for prepared Key and ivVector thad are already exist
-     */
-    @Throws(IOException::class)
-    fun AES() {
+    init {
         IV = IvParameterSpec(ivReader())
         KEY = SecretKeySpec(keyReader(), "AES")
     }
