@@ -1,6 +1,6 @@
 package ir.baha2r.m98.crypto.aes
 
-import ir.baha2r.m98.crypto.aesfilemanager.FileManager
+import ir.baha2r.m98.crypto.aesfilemanager.AESFileManager
 import ir.baha2r.m98.crypto.aesfilemanager.MakeVisible
 import java.io.File
 import java.io.IOException
@@ -9,17 +9,19 @@ import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
-class AES
 /**
- * This constructor is used for prepared Key and ivVector thad are already exist
- */ @Throws(IOException::class) constructor() : FileManager() {
-    private val ALGORITHM = "AES/CBC/PKCS5PADDING"
-    private lateinit var KEY: SecretKeySpec
-    private lateinit var IV: IvParameterSpec
+ * @author Baha2r
+ * **/
+//TODO: add comments
+class AES
+@Throws(IOException::class) constructor() : AESFileManager() {
+    private val algorithm = "AES/CBC/PKCS5PADDING"
+    private var key: SecretKeySpec
+    private var iv: IvParameterSpec
 
     init {
-        IV = IvParameterSpec(ivReader())
-        KEY = SecretKeySpec(keyReader(), "AES")
+        iv = IvParameterSpec(ivReader())
+        key = SecretKeySpec(keyReader(), "AES")
     }
 
     @Throws(IOException::class)
@@ -36,8 +38,8 @@ class AES
 
     private fun encryption(plainText: String): String? {
         try {
-            val cipher = Cipher.getInstance(ALGORITHM)
-            cipher.init(Cipher.ENCRYPT_MODE, KEY, IV)
+            val cipher = Cipher.getInstance(algorithm)
+            cipher.init(Cipher.ENCRYPT_MODE, key, iv)
             val encrypted = cipher.doFinal(plainText.toByteArray())
             return Base64.getEncoder().encodeToString(encrypted)
         } catch (e: Exception) {
@@ -49,8 +51,8 @@ class AES
 
     private fun decryption(cipherText: String): String? {
         try {
-            val cipher = Cipher.getInstance(ALGORITHM)
-            cipher.init(Cipher.DECRYPT_MODE, KEY, IV)
+            val cipher = Cipher.getInstance(algorithm)
+            cipher.init(Cipher.DECRYPT_MODE, key, iv)
             val original = cipher.doFinal(Base64.getDecoder().decode(cipherText))
             return String(original)
         } catch (e: Exception) {
@@ -88,9 +90,9 @@ class AES
             }
             fileName = "Encrypted_$fileName"
             println("Your file is encrypted now!\n")
-            val EF = writeFile(directory, fileName, encryption(text)!!)
-            EF.setReadOnly()
-            return EF
+            val ef = writeFile(directory, fileName, encryption(text)!!)
+            ef.setReadOnly()
+            return ef
         }
         if (file.name.contains(".bin")) {
             text = readBinaryFile(file)
@@ -100,9 +102,9 @@ class AES
             }
             fileName = "Encrypted_$fileName"
             println("Your file is encrypted now!\n")
-            val EF = writeBinaryFile(directory, fileName, encryption(text)!!)
-            EF.setReadOnly()
-            return EF
+            val ef = writeBinaryFile(directory, fileName, encryption(text)!!)
+            ef.setReadOnly()
+            return ef
         }
         return null
     }
