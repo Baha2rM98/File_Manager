@@ -3,7 +3,7 @@ package ir.baha2r.m98.crypto.aesfilemanager
 import java.io.*
 import java.util.*
 
-abstract class FileManager protected constructor() {
+abstract class AESFileManager protected constructor() {
 
     @Throws(IOException::class)
     private fun creatFile(directory: File, fileName: String): File? {
