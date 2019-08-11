@@ -77,14 +77,14 @@ class AES
                 break
             }
         }
-        if (file == null) {
+        if (file === null) {
             System.err.println("There is no file with this information in this directory!")
             return null
         }
         val text: String
         if (isTextFile(file)) {
             text = readFile(file)
-            if (text == "") {
+            if (text === "") {
                 System.err.println("file is empty!")
                 return null
             }
@@ -96,7 +96,7 @@ class AES
         }
         if (file.name.contains(".bin")) {
             text = readBinaryFile(file)
-            if (text == "") {
+            if (text === "") {
                 System.err.println("file is empty!")
                 return null
             }
@@ -126,14 +126,14 @@ class AES
                 break
             }
         }
-        if (encryptedFile == null) {
+        if (encryptedFile === null) {
             System.err.println("There is no file with this information in this directory!")
             return null
         }
         val encrypted: String
         if (isTextFile(encryptedFile)) {
             encrypted = readFile(encryptedFile)
-            if (encrypted == "") {
+            if (encrypted === "") {
                 System.err.println("file is empty!")
                 return null
             }
@@ -143,7 +143,7 @@ class AES
         }
         if (isBinaryFile(encryptedFile)) {
             encrypted = readBinaryFile(encryptedFile)
-            if (encrypted == "") {
+            if (encrypted === "") {
                 System.err.println("file is empty!")
                 return null
             }
