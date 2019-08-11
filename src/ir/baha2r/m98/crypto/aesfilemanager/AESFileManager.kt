@@ -3,6 +3,7 @@ package ir.baha2r.m98.crypto.aesfilemanager
 import java.io.*
 import java.util.*
 
+//TODO: add comments
 abstract class AESFileManager protected constructor() {
 
     @Throws(IOException::class)

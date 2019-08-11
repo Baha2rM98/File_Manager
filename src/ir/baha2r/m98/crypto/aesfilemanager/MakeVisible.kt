@@ -1,5 +1,6 @@
 package ir.baha2r.m98.crypto.aesfilemanager
 
+//TODO: add comments
 internal object MakeVisible {
     private const val mul: Byte = -1
     private const val plus: Byte = 51
