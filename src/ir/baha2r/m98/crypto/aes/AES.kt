@@ -1,5 +1,7 @@
 package ir.baha2r.m98.crypto.aes
 
+import ir.baha2r.m98.crypto.aes.Holder.Companion.IV
+import ir.baha2r.m98.crypto.aes.Holder.Companion.KEY
 import ir.baha2r.m98.crypto.aesfilemanager.AESFileManager
 import ir.baha2r.m98.crypto.aesfilemanager.MakeVisible
 import java.io.File
@@ -14,7 +16,7 @@ import javax.crypto.spec.SecretKeySpec
  * **/
 //TODO: add comments
 class AES
-@Throws(IOException::class) constructor() : AESFileManager() {
+@Throws(IOException::class) constructor() : AESFileManager(), Holder {
     private val algorithm = "AES/CBC/PKCS5PADDING"
     private var key: SecretKeySpec
     private var iv: IvParameterSpec
@@ -26,13 +28,13 @@ class AES
 
     @Throws(IOException::class)
     private fun ivReader(): ByteArray {
-        val bytes: ByteArray = Holder.IV
+        val bytes: ByteArray = IV
         return MakeVisible.show(bytes)
     }
 
     @Throws(IOException::class)
     private fun keyReader(): ByteArray {
-        val bytes: ByteArray = Holder.KEY
+        val bytes: ByteArray = KEY
         return MakeVisible.show(bytes)
     }
 
