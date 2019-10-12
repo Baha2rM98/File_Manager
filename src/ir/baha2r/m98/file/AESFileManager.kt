@@ -13,7 +13,7 @@ import java.util.*
  * @constructor prepare this class through inherited class
  **/
 
-class FileManager : File(File::class.java.toString()) {
+class AESFileManager : File(File::class.java.toString()) {
 
     /**
      * string for files's suffixes

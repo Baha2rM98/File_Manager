@@ -113,9 +113,6 @@ class AES
 
     @Throws(IOException::class)
     fun fileDecryption(directory: File, originalFileName: String): File? {
-        var fileName = originalFileName
-        val tempName = fileName
-        fileName = "Encrypted_$fileName"
         if (!directory.isDirectory) {
             System.err.println("This is not a directory!")
             return null
@@ -123,7 +120,7 @@ class AES
         var encryptedFile: File? = null
         val files = directory.listFiles()!!
         for (value in files) {
-            if (value.name == fileName) {
+            if (value.name == originalFileName) {
                 encryptedFile = value
                 break
             }
@@ -139,6 +136,9 @@ class AES
                 System.err.println("file is empty!")
                 return null
             }
+            val nameBuilder = StringBuilder(originalFileName)
+            nameBuilder.delete(0, 10)
+            val tempName = nameBuilder.toString()
             val finalName = "Decrypted_$tempName"
             println("Your file is decrypted now!\n")
             return writeFile(directory, finalName, decryption(encrypted)!!)
@@ -149,6 +149,9 @@ class AES
                 System.err.println("file is empty!")
                 return null
             }
+            val nameBuilder = StringBuilder(originalFileName)
+            nameBuilder.delete(0, 10)
+            val tempName = nameBuilder.toString()
             val finalName = "Decrypted_$tempName"
             println("Your file is decrypted now!\n")
             return writeFile(directory, finalName, decryption(encrypted)!!)
