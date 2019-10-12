@@ -1,6 +1,6 @@
 
 /**
- * A class to complete java.io.File @suppress java.io.File
+ * AES File Manager
  **/
 
 package ir.baha2r.m98.file
