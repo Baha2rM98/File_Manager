@@ -1,6 +1,6 @@
 
 /**
- * AES File Manager
+ * File Manager class to complete Java io.File
  **/
 
 package ir.baha2r.m98.file
@@ -13,7 +13,7 @@ import java.util.*
  * @constructor prepare this class through inherited class
  **/
 
-class AESFileManager : File(File::class.java.toString()) {
+class FileManager : File(File::class.java.toString()) {
 
     /**
      * string for files's suffixes
